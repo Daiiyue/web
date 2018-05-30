@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/02">02</a>
+url反向解析<br>
+<a href="{% url 'booktest:02' %}">02反向</a><br>
+<a href="{% url 'booktest:show_args' 3 2 %}">show</a>
+<a href="{% url 'booktest:show_kwargs' c=3 d=4 %}">showkw</a>
+</body>
+</html>

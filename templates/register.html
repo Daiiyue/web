@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="/static/js/jquery-1.12.4.min.js"></script>
+
+{#<style>#}
+{#    #warn{#}
+{#        display: none;#}
+{#        color: red;#}
+{#    }#}
+{##}
+{#</style>#}
+{#<script>#}
+{#    window.onload = function () {#}
+{#        if({{ warn_data }}) {#}
+{#        var Owarn = document.getElementById('warn')#}
+{#            Owarn.style.display = 'block'#}
+{#    }#}
+{#    }#}
+{#</script>#}
+
+<script>
+    $(function () {
+        $("#ajaxBtn").click(function () {
+            username = $("#username").val()
+            pwd = $("#pwd").val()
+            email = $("#email").val()
+            phone = $("#phone").val()
+            $.ajax({
+                'url':'/register_check',
+                'type':'post',
+                'data':{'username':username,'pwd':pwd,'email':email,'phone':phone},
+                'dataType':'json',
+            })
+        })
+    })
+</script>
+<body>
+
+<form action="/register_check" method="post">
+    用户名<input type="text" name="username" id="username"><br>
+    密码<input type="password" name="pwd" id="pwd"><br>
+    email<input type="text" name="email" id="email"><br>
+    手机<input type="text" name="phone" id="phone"><br>
+    <input type="submit" value="注册"><br>
+{#    <div id="warn">用户名重复</div>#}
+    <input type="button" value="ajax实现" id="ajaxBtn">
+</form>
+</body>
+</html>

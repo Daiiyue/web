@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+    {% for area in list %}
+        <li>{{ area.atitle }}</li>
+    {% endfor %}
+    </ul>
+    {% for index in plist %}
+        {% if pindex == index %}
+            {{ pindex }}
+        {% else %}
+            <a href="/page/{{ index }}">{{ index }}</a>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>

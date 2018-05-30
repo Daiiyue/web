@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<script src="/static/js/jquery-1.12.4.min.js"></script>
+<script>
+    $(function () {
+        $("#ajaxBtn").click(function () {
+            var username = $("#username").val(),
+            pwd = $("#pwd").val(),
+            rem_name = $("#rem_name").val();
+
+            $.ajax({
+                'url':'/login_check',
+                'data':{'username':username,'pwd':pwd,'rem_name':rem_name},
+                'type':'post',
+                'dataType':'json'
+            })
+                .done(function (data) {
+                    if (data.res == 1){
+                        $("#loginmsg").show().html("登录成功")
+                        {#location.href = '/show'#}
+                    }
+                    if (data.res == 2){
+                         $("#loginmsg").show().html("账户名或密码错误")
+                        location.href = '/login'
+                    }
+            })
+        })
+    })
+</script>
+<body>
+<form action="/login_check" method="post">
+    {% csrf_token %}
+    用户名<input type="text" name="username" id="username" value="{{ username }}"><br>
+    密码<input type="password" name="pwd" id="pwd"><br>
+    <input type="checkbox" name='rem_name' id="rem_name"> 记住用户名<br>
+    <input type="submit" value="登录"><br>
+    <input type="button" value="ajax实现" id="ajaxBtn">
+    <div id="loginmsg" style="display: none"></div>
+</form>
+
+</body>
+</html>

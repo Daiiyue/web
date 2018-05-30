@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>展示信息</title>
+</head>
+
+<body>
+    {% load filters %}
+    <li>姓名：--  {{ username }}</li>
+    <li>电话：--  {{ phone|modphone }}</li>
+    <li>邮箱：--  {{ email|modemail }}</li>
+
+</body>
+</html>
